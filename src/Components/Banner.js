@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 
 // Images:
@@ -27,23 +27,38 @@ const slideImgs = [
 
 // Main:
 const Banner = () => {
+  // State for Slider:
+  const [slides, setSlides] = useState(slideImgs);
+  const [index, setIndex] = useState(0);
+
   return (
     <React.Fragment>
       <section className='section banner-sect'>
-        <AiOutlineLeft className='single-arrow left-arrow'></AiOutlineLeft>
-        <AiOutlineRight className='single-arrow right-arrow'></AiOutlineRight>
-        <div className='slider-img-container'>
-          {slideImgs.map(({ id, imageUrl }) => {
+        <div className='slider-text'>
+          <h1>Art</h1>
+        </div>
+        <div className='slider-img-center'>
+          {slides.map((image, imageIndex) => {
+            const { id, imageUrl } = image;
+            //Functionality Slider:
+            let position = 'nextSlide';
+            // Active:
+            if (imageIndex === index) {
+              position = 'activeSlide';
+            }
+            // Last:
+            if (imageIndex === index - 1) {
+              position = 'lastSlide';
+            }
             return (
-              <img
-                src={imageUrl}
-                alt='slider'
-                className='slide-img'
-                key={id}
-              ></img>
+              <article className={position} key={id}>
+                <img src={imageUrl} alt='slider' className='slide-img'></img>
+              </article>
             );
           })}
         </div>
+        <AiOutlineLeft className='single-arrow left-arrow'></AiOutlineLeft>
+        <AiOutlineRight className='single-arrow right-arrow'></AiOutlineRight>
       </section>
     </React.Fragment>
   );
