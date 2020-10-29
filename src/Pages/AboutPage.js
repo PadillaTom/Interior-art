@@ -2,13 +2,16 @@ import React, { useRef, useEffect } from 'react';
 import useHorizontal from '@oberon-amsterdam/horizontal/hook';
 // Animations:
 import { TimelineMax, Back } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const AboutPage = () => {
   useHorizontal();
   let letters = useRef(null);
+  let scrollImage = useRef(null);
   let tl = new TimelineMax();
-  // DESIGN Letters
+
   useEffect(() => {
+    // :::::::::::: DESIGN Letters ::::::::::::::::::::
     tl.from(letters.firstElementChild, 0.8, {
       y: -300,
       opacity: 0,
@@ -90,14 +93,17 @@ const AboutPage = () => {
             </h1>
           </div>
           {/* Image */}
-          <div className='about-img-container'>
-            <div className='img-overlay-before'></div>
+          <div
+            className='about-img-container'
+            ref={(el) => {
+              scrollImage = el;
+            }}
+          >
             <img
               src='https://firebasestorage.googleapis.com/v0/b/interior-art.appspot.com/o/img11.jpg?alt=media&token=de56e776-d588-4f1e-b7de-8ee6aa2b2ad0'
               alt='About'
               className='about-img'
             />
-            <div className='img-overlay-after'></div>
           </div>
           {/* About Description */}
           <h4 className='about-description'>
