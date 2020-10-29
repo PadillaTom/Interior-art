@@ -219,8 +219,12 @@ a {
   position: absolute;
   top: 8%;
   left: -5%;
-  font-size: 27rem;
+  font-size: 24rem;
+  font-family: var(--TitleFont);
+
+  letter-spacing: 2px;
   color: var(--FontGrayColor);
+  font-weight: 600;
   opacity: 0.3;
 }
 /* End  Banner Component*/
