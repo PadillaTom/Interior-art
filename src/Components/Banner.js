@@ -2,15 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 // Images:
 import sliderImgs from '../Context/sliderImages';
+
 // Animations:
-import { TweenMax, TimelineLite, Power3, Bounce } from 'gsap';
+import { TweenMax, TimelineMax, Quint } from 'gsap';
 
 const Banner = () => {
   // ::::::::::::::::: GSAP :::::::::::::::::::::::
 
   let wholeContainer = useRef(null);
   let imagesContainer = useRef(null);
-  let tl = new TimelineLite();
+  let tl = new TimelineMax();
 
   useEffect(() => {
     // Prevent Default:
@@ -18,9 +19,22 @@ const Banner = () => {
       opacity: 1,
     });
     // Images Container:
-    TweenMax.from(imagesContainer, 6, {
-      scale: 0.6,
-    });
+    tl.from(
+      imagesContainer,
+      1.7,
+      {
+        opacity: 0,
+      },
+      0.7
+    ).from(
+      imagesContainer,
+      2,
+      {
+        scale: 1.6,
+        ease: Quint.easeInOut,
+      },
+      1.3
+    );
   }, []);
 
   //  ::::::::::::: SLIDER :::::::::::::::::
@@ -47,6 +61,9 @@ const Banner = () => {
           wholeContainer = element;
         }}
       >
+        <div className='deco-text'>
+          <h1>Create</h1>
+        </div>
         <div
           className='slider-images-container'
           ref={(el) => (imagesContainer = el)}
