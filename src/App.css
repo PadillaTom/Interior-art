@@ -230,8 +230,89 @@ a {
 /* End  Banner Component*/
 
 /* :::::::::::::::::::::::::  About Page :::::::::::::::::::::::::::::::: */
+/* Block Scroll */
+.block {
+  height: 100vh;
+  display: flex;
+  min-width: 300%;
+}
+/* Page */
 .about-sect {
-  min-height: 140vh;
+  height: 100vh;
+  position: relative;
+}
+.about-title {
+  position: absolute;
+  top: 35%;
+  left: 20%;
+  font-size: 25rem;
+  font-family: var(--TitleFont);
+  letter-spacing: 1rem;
+  color: var(--FontGrayColor);
+  opacity: 0.2;
+  white-space: nowrap;
+}
+/* DESIGN LOGO */
+.about-logo {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 6rem;
+  font-family: var(--TitleFont);
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 2;
+  color: var(--CtaColor);
+  transform: translate3d(-12.009g9x, 0px, 0px);
+}
+.about-logo h1 {
+  position: relative;
+}
+.letter1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.letter2 {
+  position: absolute;
+  top: 0;
+  left: 6.7rem;
+}
+.letter3 {
+  position: absolute;
+  top: 0;
+  left: 12.8rem;
+}
+.letter4 {
+  position: absolute;
+  top: 0;
+  left: 18.4rem;
+}
+.letter5 {
+  position: absolute;
+  top: 0;
+  left: 21rem;
+}
+.letter6 {
+  position: absolute;
+  top: 0;
+  left: 27.3rem;
+}
+.about-img {
+  position: absolute;
+  top: -5%;
+  left: 50%;
+  width: 35rem;
+  object-fit: cover;
+}
+.about-text-block2 {
+  position: absolute;
+  top: 50%;
+  width: 50%;
+  margin: 0 auto;
+  left: 60%;
 }
 /* End About Page */
 

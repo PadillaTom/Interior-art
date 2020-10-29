@@ -25,7 +25,7 @@ const Banner = () => {
       {
         opacity: 0,
       },
-      0.7
+      0.2
     ).from(
       imagesContainer,
       2,
