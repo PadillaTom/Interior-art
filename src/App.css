@@ -14,7 +14,7 @@ html {
   background-color: var(--BgColor);
 }
 body {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 ul {
   list-style: none;
@@ -144,6 +144,7 @@ a {
 .banner-sect {
   position: relative;
   height: 100vh;
+  overflow: hidden;
   /* GSAP */
   opacity: 0;
 }
@@ -217,11 +218,10 @@ a {
 }
 .deco-text {
   position: absolute;
-  top: 8%;
-  left: -5%;
-  font-size: 24rem;
+  top: 30%;
+  left: -15%;
+  font-size: 27rem;
   font-family: var(--TitleFont);
-
   letter-spacing: 2px;
   color: var(--FontGrayColor);
   font-weight: 600;
@@ -229,8 +229,11 @@ a {
 }
 /* End  Banner Component*/
 
-/* :::::::::::::::::::::::::  :::::::::::::::::::::::::::::::: */
-/* End  */
+/* :::::::::::::::::::::::::  About Page :::::::::::::::::::::::::::::::: */
+.about-sect {
+  min-height: 140vh;
+}
+/* End About Page */
 
 /* :::::::::::::::::::::::::  :::::::::::::::::::::::::::::::: */
 /* End  */
