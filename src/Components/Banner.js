@@ -1,64 +1,89 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
-
 // Images:
-const slideImgs = [
-  {
-    id: 1,
-    imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/interior-art.appspot.com/o/img13.jpg?alt=media&token=7a905e49-8d2e-45b4-b372-064353f79fdd',
-  },
-  {
-    id: 2,
-    imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/interior-art.appspot.com/o/img14.jpg?alt=media&token=b8358b35-b8b4-429e-bc08-deaf28d7f72b',
-  },
-  {
-    id: 3,
-    imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/interior-art.appspot.com/o/img8.jpg?alt=media&token=876af10b-83d3-4b6a-b2af-ccaba37320b0',
-  },
-  {
-    id: 4,
-    imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/interior-art.appspot.com/o/img15.jpg?alt=media&token=90588b76-d739-4649-bd9d-37613f09c107',
-  },
-];
+import sliderImgs from '../Context/sliderImages';
+// Animations:
+import { TweenMax, TimelineLite, Power3, Bounce } from 'gsap';
 
-// Main:
 const Banner = () => {
-  // State for Slider:
-  const [slides, setSlides] = useState(slideImgs);
-  const [index, setIndex] = useState(0);
+  // ::::::::::::::::: GSAP :::::::::::::::::::::::
 
+  let wholeContainer = useRef(null);
+  let imagesContainer = useRef(null);
+  let tl = new TimelineLite();
+
+  useEffect(() => {
+    // Prevent Default:
+    TweenMax.to(wholeContainer, 0, {
+      opacity: 1,
+    });
+    // Images Container:
+    TweenMax.from(imagesContainer, 6, {
+      scale: 0.6,
+    });
+  }, []);
+
+  //  ::::::::::::: SLIDER :::::::::::::::::
+  // State for Slider:
+  const [slides, setSlides] = useState(sliderImgs);
+  const [index, setIndex] = useState(0);
+  // Use Effect for Last Slide or -1 Slide--->
+  useEffect(() => {
+    const lastIndex = slides.length - 1;
+    if (index < 0) {
+      setIndex(lastIndex);
+    }
+    if (index > lastIndex) {
+      setIndex(0);
+    }
+  }, [index]);
+
+  // ::::::::::::::::::: RENDER :::::::::::::::::::::::::
   return (
     <React.Fragment>
-      <section className='section banner-sect'>
-        <div className='slider-text'>
-          <h1>Art</h1>
-        </div>
-        <div className='slider-img-center'>
+      <section
+        className='banner-sect'
+        ref={(element) => {
+          wholeContainer = element;
+        }}
+      >
+        <div
+          className='slider-images-container'
+          ref={(el) => (imagesContainer = el)}
+        >
           {slides.map((image, imageIndex) => {
             const { id, imageUrl } = image;
-            //Functionality Slider:
+            // Functionality:
             let position = 'nextSlide';
-            // Active:
+            // ACTIVE:
             if (imageIndex === index) {
               position = 'activeSlide';
             }
-            // Last:
-            if (imageIndex === index - 1) {
+            // LAST:
+            if (
+              imageIndex === index - 1 ||
+              (index === 0 && imageIndex === slides.length - 1)
+            ) {
               position = 'lastSlide';
             }
+
             return (
-              <article className={position} key={id}>
-                <img src={imageUrl} alt='slider' className='slide-img'></img>
+              <article className={`image-container ${position}`} key={id}>
+                <img src={imageUrl} alt='bannerSlide' className='slide-image' />
               </article>
             );
           })}
         </div>
-        <AiOutlineLeft className='single-arrow left-arrow'></AiOutlineLeft>
-        <AiOutlineRight className='single-arrow right-arrow'></AiOutlineRight>
+        <div className='single-arrow'>
+          <AiOutlineLeft
+            className='left-arrow'
+            onClick={() => setIndex(index - 1)}
+          ></AiOutlineLeft>
+          <AiOutlineRight
+            className='right-arrow'
+            onClick={() => setIndex(index + 1)}
+          ></AiOutlineRight>
+        </div>
       </section>
     </React.Fragment>
   );
