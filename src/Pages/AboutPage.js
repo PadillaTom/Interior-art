@@ -7,6 +7,7 @@ const AboutPage = () => {
   useHorizontal();
   let letters = useRef(null);
   let tl = new TimelineMax();
+  // DESIGN Letters
   useEffect(() => {
     tl.from(letters.firstElementChild, 0.8, {
       y: -300,
@@ -73,6 +74,7 @@ const AboutPage = () => {
       <section className='section about-sect'>
         <div className='block'>
           <div className='about-title'>About Us</div>
+          {/* Animated Text = LOGO */}
           <div className='about-logo'>
             <h1
               ref={(el) => {
@@ -87,18 +89,30 @@ const AboutPage = () => {
               <span className='letter6'>n</span>
             </h1>
           </div>
-          <img
-            src='https://firebasestorage.googleapis.com/v0/b/interior-art.appspot.com/o/img11.jpg?alt=media&token=de56e776-d588-4f1e-b7de-8ee6aa2b2ad0'
-            alt='About'
-            className='about-img'
-          />
-          <h4 className='about-text-block2'>
+          {/* Image */}
+          <div className='about-img-container'>
+            <div className='img-overlay-before'></div>
+            <img
+              src='https://firebasestorage.googleapis.com/v0/b/interior-art.appspot.com/o/img11.jpg?alt=media&token=de56e776-d588-4f1e-b7de-8ee6aa2b2ad0'
+              alt='About'
+              className='about-img'
+            />
+            <div className='img-overlay-after'></div>
+          </div>
+          {/* About Description */}
+          <h4 className='about-description'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
             accusantium fugiat ex quia laudantium iste iure, vero optio veniam,
             ullam, accusamus sit? Nisi nam illum quo eius quasi perspiciatis
             facere veniam natus minus mollitia, commodi distinctio atque dolor
             at corporis. Nobis consectetur architecto provident et!
             Perspiciatis, iste consequuntur!
+            <br />
+            <br />
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+            repellat natus voluptatum sapiente adipisci ex provident voluptates
+            ad vel alias corporis odio doloremque, facilis fugit magni neque
+            maiores quibusdam magnam.
           </h4>
         </div>
       </section>

@@ -234,18 +234,19 @@ a {
 .block {
   height: 100vh;
   display: flex;
-  min-width: 300%;
+  width: 140vw;
 }
 /* Page */
 .about-sect {
   height: 100vh;
   position: relative;
 }
+/* Titulo de Fondo */
 .about-title {
   position: absolute;
   top: 35%;
-  left: 20%;
-  font-size: 25rem;
+  left: 5%;
+  font-size: 22rem;
   font-family: var(--TitleFont);
   letter-spacing: 1rem;
   color: var(--FontGrayColor);
@@ -256,7 +257,7 @@ a {
 .about-logo {
   position: absolute;
   top: 50%;
-  left: 0;
+  left: 5%;
   transform: translateY(-50%);
   font-size: 6rem;
   font-family: var(--TitleFont);
@@ -300,19 +301,29 @@ a {
   top: 0;
   left: 27.3rem;
 }
-.about-img {
+/* Imagen */
+.about-img-container {
   position: absolute;
-  top: -5%;
-  left: 50%;
-  width: 35rem;
+  top: 10%;
+  left: 42%;
+  width: 40rem;
+}
+.about-img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
-.about-text-block2 {
+/* Description */
+.about-description {
   position: absolute;
-  top: 50%;
-  width: 50%;
+  top: 30%;
+  left: 80%;
+  width: 30%;
   margin: 0 auto;
-  left: 60%;
+  text-align: center;
+  color: var(--GrayColor);
+  font-family: var(--TextsFont);
+  letter-spacing: 2px;
 }
 /* End About Page */
 
