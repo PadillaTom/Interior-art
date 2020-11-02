@@ -251,7 +251,7 @@ a {
   font-family: var(--TitleFont);
   letter-spacing: 1rem;
   color: var(--FontGrayColor);
-  opacity: 0.2;
+  opacity: 0.25;
   white-space: nowrap;
 }
 /* DESIGN LOGO */
