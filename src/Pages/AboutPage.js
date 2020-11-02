@@ -1,13 +1,14 @@
 import React, { useRef, useEffect } from 'react';
 import useHorizontal from '@oberon-amsterdam/horizontal/hook';
 // Animations:
-import { TimelineMax, Back } from 'gsap';
+import { TimelineMax, Back, gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 const AboutPage = () => {
   useHorizontal();
   let letters = useRef(null);
-  let scrollImage = useRef(null);
+
   let tl = new TimelineMax();
 
   useEffect(() => {
@@ -70,6 +71,16 @@ const AboutPage = () => {
         },
         1
       );
+    //:::::::: Scroll Image ::::::::::::::::::
+    gsap.to('.about-img', {
+      y: -1200,
+      scrollTrigger: {
+        trigger: '.about-img',
+        horizontal: true,
+        start: 'left-=400 left',
+        scrub: 4,
+      },
+    });
   }, []);
 
   return (
@@ -93,12 +104,7 @@ const AboutPage = () => {
             </h1>
           </div>
           {/* Image */}
-          <div
-            className='about-img-container'
-            ref={(el) => {
-              scrollImage = el;
-            }}
-          >
+          <div className='about-img-container'>
             <img
               src='https://firebasestorage.googleapis.com/v0/b/interior-art.appspot.com/o/img11.jpg?alt=media&token=de56e776-d588-4f1e-b7de-8ee6aa2b2ad0'
               alt='About'
